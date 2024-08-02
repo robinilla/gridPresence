@@ -8,14 +8,16 @@ set.seed(1993)
 
 # Hunting estates collected simulation
 # As collected hunting yields cannot be shared due to data share agreement conficendialty
-# Simualated hunting yields data sets are provided for running gridPresence() function 
+# Simulated hunting yields data sets are provided for running gridPresence() function 
 
+# load the grid/s
+# Read 5 x 5 km grid: downloaded from the EEA grid and masked with Spain
+load(url("https://raw.githubusercontent.com/robinilla/gridPresence/main/script/grid5km.Rdata")) 
 
-# Read 10x10km and 5x5km grid 
-grid10km<-st_read("G:/IREC/PhD/D/Docs/Sonia/0_PhD/4_DataPaper/GIS_example/grid10km.shp") %>%  
-  dplyr::select(CELLCOD, EOFORIG, NOFORIG) #read 10 x 10 km grid downloaded from the EEA
-grid5km<-st_read("G:/IREC/PhD/D/Docs/Sonia/0_PhD/4_DataPaper/GIS_example/grid5km.shp") %>% mutate(id2=id) %>% 
-  dplyr::select(id2, left, top, right, bottom) #read 5 x 5 km grid: created from the EEA above grid with QGIS
+# Transform the 5 x 5 km grid to 10 x 10 km (EEA grid code )
+# it will take few minutes, be patient, it works
+grid10km<-grid5km %>% group_by(CELLCOD) %>% summarise(geometry = sf::st_union(geometry)) %>% ungroup()
+
 
 # Create hunting estates (irregular polygons ): from the extent of our 10x10 km grid 
 sarea <- rast(nrows = 100, ncols = 100, ext(grid10km))
