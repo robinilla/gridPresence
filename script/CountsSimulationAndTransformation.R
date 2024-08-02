@@ -91,7 +91,7 @@ for (i in 1:(cotos.hs %>% dplyr::select(matches("HS")) %>% ncol() -1)){    # tak
   print(col.name)                                                          # just to know which hunting season we are running
   layer.sp1<-cotos.hs %>% dplyr::select(id, species, all_of(col.name))
   intersection.list10km[[i]]<-gridPresence(small=layer.sp1, big=grid10km, id=CELLCOD, harvTot=!!sym(col.name))
-  intersection.list5km[[i]]<-gridPresence(small=layer.sp1, big=grid5km, id=id2, harvTot=!!sym(col.name))
+  intersection.list5km[[i]]<-gridPresence(small=layer.sp1, big=grid5km, id=cellcode, harvTot=!!sym(col.name))
 }
 
 #Plot grid presence: plot example for first hunting season
