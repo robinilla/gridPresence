@@ -2,6 +2,7 @@ library(dismo)
 library(terra)
 library(sf)
 library(ggpubr)
+library(tidyverse)
 
 rm(list=ls())
 set.seed(1993)
@@ -114,3 +115,5 @@ ggarrange(ggplot()+
             theme(legend.position = "none")+
             theme_bw(), 
           ncol=2, nrow=1, common.legend = T, legend = "none")
+
+
