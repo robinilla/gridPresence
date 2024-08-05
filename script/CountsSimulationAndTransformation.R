@@ -1,13 +1,17 @@
-library(dismo)
-library(terra)
-library(sf)
-library(ggpubr)
-library(tidyverse)
-rm(list=ls())
+## Institute for Game and Wildlife Research
+## data Author: Remain anonymous for per review 
+## Date: 08/02/2024
 
-# Hunting estates collected simulation
-# As collected hunting yields cannot be shared due to data share agreement conficendialty
-# Simulated hunting yields data sets are provided for running gridPresence() function 
+# library(dismo)
+# library(terra)
+library(sf)
+library(tidyverse)
+library(ggpubr)
+rm(list=ls()) # clears R workspace
+
+# Count data collected simulation
+# Collected hunting yields cannot be shared due to data share agreement confidentiality
+# Simulated hunting yields data sets are provided for running gridPresence() function
 
 # ---------------------------------------------
 # 1) load the provided data example
@@ -32,12 +36,8 @@ grid10km<-grid5km %>% group_by(CELLCOD) %>% summarise(geometry = sf::st_union(ge
 # system, if not an ERROR will be display
 # Note 2: id and count are not objects of your environment. They are column 
 # names, and must not be provided between quotes. The function 
-# implements quotation of these parameters (line)
+# implements quotation of these parameters
 
-# small<-polygon.layer
-# big<-grid5km
-# id<-quo(CELLCOD)
-# count<-quote(spYear1)
 
 # Create the function with the 4 above commented parameters
 gridPresence<-function(small, big, id, count){                              
@@ -50,13 +50,6 @@ gridPresence<-function(small, big, id, count){
   if(!("sf" %in% class(big))) {                                               
     stop("ERROR: Class of second argument is not sf")
   }
-  
-  # if(!(id %in% colnames(big))) {
-  #   stop("ERROR: Class of third argument is not a column name of the big layer")
-  # }
-  # if(!(count %in% colnames(small))) {
-  #   stop("ERROR: Class of forth argument is not a column name of the small layer")
-  # }
   
   # Check that big and small objects have the same Coordinate Reference System
   if (st_crs(big)!=st_crs(small)) {                                           
@@ -76,8 +69,10 @@ gridPresence<-function(small, big, id, count){
     # Group all cell grids with the same id from the above intersection
     intersection<-intersection %>% 
       # Transform count to presence: if count field is NA or 0, it will be 0,
-      #  and if count field is above 0 it will be 1
-      mutate(Presence=ifelse(is.na(!!count), 0, ifelse(!!count>0, 1, 0))) %>% 
+      # and if count field is above 0 it will be 1
+      # Note: !! it does not do anything by itself, it tells mutate to replace count 
+      # by the quoted content of count
+      mutate(Presence=ifelse(is.na(!!count), 0, ifelse(!!count>0, 1, 0))) %>%  
       # transform into a tibble for grouping faster
       as_tibble() %>% 
       # use id for grouping all the cell grids
@@ -96,7 +91,7 @@ gridPresence<-function(small, big, id, count){
 
 
 # Make the grid transformation from different years and different grids at once
-intersection.list10km<-list()
+intersection.list10km<-list() #create a 
 intersection.list5km<-list()
 for (i in 1:(polygon.layer %>% dplyr::select(matches("sp")) %>% ncol() -1)){    # take care that the hunting yields from different hunting seasons have some common name in the columns name
   col.name<-(polygon.layer %>% dplyr::select(matches("sp")) %>% colnames())[i]
@@ -106,15 +101,23 @@ for (i in 1:(polygon.layer %>% dplyr::select(matches("sp")) %>% ncol() -1)){    
   intersection.list5km[[i]]<-gridPresence(small=layer.sp1, big=grid5km, id=cellcode, count=!!sym(col.name))
 }
 
+
+# Transform list results as a data frame by cbind its columns 
+intersection.list5km<-do.call(cbind, intersection.list5km) %>% dplyr::select(cellcode, eoforigin, noforigin, CCAA, matches("Pres")) 
+colnames(intersection.list5km) [5:7]<-gsub("sp", "pres", (polygon.layer %>% dplyr::select(matches( "sp")) %>% colnames()))[1:3]
+
+intersection.list10km<-do.call(cbind, intersection.list10km) %>% dplyr::select(CELLCOD, matches("Pres")) 
+colnames(intersection.list10km) [2:4]<-gsub("sp", "pres", (polygon.layer %>% dplyr::select(matches( "sp")) %>% colnames()))[1:3]
+
 #Plot grid presence: plot example for first count year
 ggarrange(ggplot()+
-            geom_sf(data=intersection.list10km[[1]], aes(fill=as.factor(Presence), alpha=0.25), color="darkgrey")+   # 10 x 10 km grid
+            geom_sf(data=intersection.list10km, aes(fill=as.factor(presYear1), alpha=0.25), color="darkgrey")+   # 10 x 10 km grid
             scale_fill_manual(values = c("#d3d3d3", "#6eac5c"))+
             ggtitle("10 x 10 km")+
             theme(legend.position = "none")+
             theme_bw(),
           ggplot()+
-            geom_sf(data=intersection.list5km[[1]], aes(fill=as.factor(Presence), alpha=0.25), color="darkgrey")+   # 10 x 10 km grid
+            geom_sf(data=intersection.list5km, aes(fill=as.factor(presYear1), alpha=0.25), color="darkgrey")+   # 10 x 10 km grid
             scale_fill_manual(values = c("#d3d3d3", "#6eac5c"))+
             ggtitle("5 x 5 km")+
             theme(legend.position = "none")+
@@ -124,7 +127,7 @@ ggarrange(ggplot()+
 
 
 # Plot collected hunting yields for the different hunting seasons
-# uncomment lines 27-42 for running
+# uncomment lines 137-152 for running
 # yellow line polygons represent the value 0, that is, no individuals have been counted
 # ggarrange(ggplot()+
 #             geom_sf(data=polygon.layer, aes(fill=spYear1))+ 
