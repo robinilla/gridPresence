@@ -2,8 +2,6 @@
 ## data Author: Remain anonymous for per review 
 ## Date: 08/02/2024
 
-# library(dismo)
-# library(terra)
 library(sf)
 library(tidyverse)
 library(ggpubr)
