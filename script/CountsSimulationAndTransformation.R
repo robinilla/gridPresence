@@ -1,5 +1,5 @@
-## Institution: Remain anonymous for per review 
-## data Author: Remain anonymous for per review 
+## Institution: Institute for Game and Wildife Research
+## data Author: Sonia Illanas
 ## Date: 08/02/2024
 
 #install.packages("sf"); install.packages("tidyverse"); install.packages("ggpubr")
