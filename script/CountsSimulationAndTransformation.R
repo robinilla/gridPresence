@@ -1,7 +1,7 @@
 ## Institution: Remain anonymous for per review 
 ## data Author: Remain anonymous for per review 
 ## Date: 08/02/2024
-
+#install.packages("sf"); install.packages("tidyverse"); install.packages("ggpubr")
 library(sf)
 library(tidyverse)
 library(ggpubr)
@@ -15,7 +15,7 @@ rm(list=ls()) # clears R workspace
 # 1) load the provided data example
 # ---------------------------------------------
 # it contains:
-# - a 5 x 5 km grid: downloaded from the EEA grid and masked with Spain
+# - a 5 x 5 km grid: downloaded from the EEA grid (https://sdi.eea.europa.eu/data/c56f5e2b-6e7f-4da7-a5b3-25a8c17ca717) and masked with Spain
 # - a simulated polygon layer with three simulated counts of whatever species
 load(url("https://raw.githubusercontent.com/robinilla/gridPresence/main/script/data_example.Rdata")) 
 
@@ -24,7 +24,7 @@ grid10km<-grid5km %>% group_by(CELLCOD) %>% summarise(geometry = sf::st_union(ge
 
 
 # -----------------------------------------------
-# 2) gridPresence function: it needs 4 parameters
+# 2) gridPresence function: it needs 4 arguments
 # -----------------------------------------------
 # big = a sf object class
 # small = a sf object class
@@ -34,17 +34,17 @@ grid10km<-grid5km %>% group_by(CELLCOD) %>% summarise(geometry = sf::st_union(ge
 # system, if not an ERROR will be display
 # Note 2: id and count are not objects of your environment. They are column 
 # names, and must not be provided between quotes. The function 
-# implements quotation of these parameters
+# implements quotation of these arguments
 
 
-# Create the function with the 4 above commented parameters
+# Create the function with the 4 above commented arguments
 gridPresence<-function(small, big, id, count){                              
   
-  # Check if small parameter is a sf object 
+  # Check if small argument is a sf object 
   if(!("sf" %in% class(small))) {                                             
     stop("ERROR: Class of first argument is not sf")
   }
-  # Check if big parameter is a sf object
+  # Check if big argument is a sf object
   if(!("sf" %in% class(big))) {                                               
     stop("ERROR: Class of second argument is not sf")
   }
@@ -89,8 +89,8 @@ gridPresence<-function(small, big, id, count){
 
 
 # Make the grid transformation from different years and different grids at once
-intersection.list10km<-list() #create a 
-intersection.list5km<-list()
+intersection.list10km<-list() #create an empty list for saving loop results
+intersection.list5km<-list()  #create an empty list for saving loop results
 for (i in 1:(polygon.layer %>% dplyr::select(matches("sp")) %>% ncol() -1)){    # take care that the hunting yields from different hunting seasons have some common name in the columns name
   col.name<-(polygon.layer %>% dplyr::select(matches("sp")) %>% colnames())[i]
   print(col.name)                                                          # just to know which hunting season we are running
