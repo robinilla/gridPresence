@@ -1,15 +1,12 @@
 ## Institution: Remain anonymous for per review 
 ## data Author: Remain anonymous for per review 
 ## Date: 08/02/2024
+
 #install.packages("sf"); install.packages("tidyverse"); install.packages("ggpubr")
 library(sf)
 library(tidyverse)
 library(ggpubr)
 rm(list=ls()) # clears R workspace
-
-# Count data collected simulation
-# Collected hunting yields cannot be shared due to data share agreement confidentiality
-# Simulated hunting yields data sets are provided for running gridPresence() function
 
 # ---------------------------------------------
 # 1) load the provided data example
@@ -26,9 +23,9 @@ grid10km<-grid5km %>% group_by(CELLCOD) %>% summarise(geometry = sf::st_union(ge
 # -----------------------------------------------
 # 2) gridPresence function: it needs 4 arguments
 # -----------------------------------------------
-# big = a sf object class
-# small = a sf object class
-# id = unique id column name from the big object class.
+# big   = a sf object class corresponding to grid layer
+# small = a sf object class corresponding to polygon layer 
+# id    = unique id column name from the big object class.
 # count = column name of count data from the small object class
 # Note 1: big and small are objects that must have the same coordinate reference
 # system, if not an ERROR will be display
