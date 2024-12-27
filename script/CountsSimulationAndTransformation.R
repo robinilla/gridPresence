@@ -1,8 +1,15 @@
 ## Institution: Institute for Game and Wildife Research
 ## data Author: Sonia Illanas
 ## Date: 08/02/2024
+## R version 4.3.3
+## sf version: 1.0-16
+## tidyverse version: 2.0.0
+## ggpubr version: 0.6.0
 
-#install.packages("sf"); install.packages("tidyverse"); install.packages("ggpubr")
+# devtools::install_version("sf", version = "1.0-16")
+# devtools::install_version("tidyverse", version = "2.0.0")
+# devtools::install_version("ggpubr", version = "0.6.0")
+
 library(sf)
 library(tidyverse)
 library(ggpubr)
