@@ -112,7 +112,7 @@ intersection.list10km<-do.call(cbind, intersection.list10km) %>% dplyr::select(C
 colnames(intersection.list10km) [2:4]<-gsub("sp", "pres", (polygon.layer %>% dplyr::select(matches( "sp")) %>% colnames()))[1:3]
 
 #Plot grid presence: plot example for first count year
-ggarrange(ggplot()+
+plot1<-ggarrange(ggplot()+
             geom_sf(data=intersection.list10km, aes(fill=as.factor(presYear1), alpha=0.25), color="darkgrey")+   # 10 x 10 km grid
             scale_fill_manual(values = c("#d3d3d3", "#6eac5c"))+
             ggtitle("10 x 10 km")+
@@ -126,7 +126,11 @@ ggarrange(ggplot()+
             theme_bw(), 
           ncol=2, nrow=1, common.legend = T, legend = "none")
 
-
+ggsave(filename = "SpeciesPresencePlot.png", #filename of the plot 
+       plot = plot1,                         #plot to save
+       width = 40, height = 30,              #dimensions
+       units = "cm",                         #dimension units
+       dpi = 300)                            #plot resolution
 
 # Plot collected hunting yields for the different hunting seasons
 # uncomment lines 137-152 for running
