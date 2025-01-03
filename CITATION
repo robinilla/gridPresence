@@ -1,84 +1,14 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-references:
-  - type: software
-    authors:
-      - family-names: "Illanas"
-        given-names: "Sonia"
-        orcid: "https://orcid.org/0000-0001-7984-1141"
-      - family-names: "Fernández-López"
-        given-names: "Javier"
-        orcid: "https://orcid.org/0000-0003-4352-0252"
-      - family-names: "Vicente"
-        given-names: "Joaquín"
-        orcid: "https://orcid.org/0000-0001-8416-3672"
-      - family-names: "Ruiz-Rodríguez"
-        given-names: "Carmen"
-        orcid: "https://orcid.org/0000-0002-0768-9280"
-      - family-names: "López-Padila"
-        given-names: "Sergio"
-        orcid: "https://orcid.org/0000-0002-9663-4758"
-      - family-names: "Sebastián-Pardo"
-        given-names: "Mario"
-        orcid: "https://orcid.org/0009-0001-4629-7175"
-      - family-names: "Preite"
-        given-names: "Ludovica"
-        orcid: "https://orcid.org/0000-0003-4557-4326"
-      - family-names: "Gómez-Molina"
-        given-names: "Azahara"
-        orcid: "https://orcid.org/0009-0003-6323-498X"
-      - family-names: "Acevedo"
-        given-names: "Pelayo"
-        orcid: "https://orcid.org/0000-0002-3509-7696"
-      - family-names: "Blanco-Aguiar"
-        given-names: "José Antonio"
-        orcid: "https://orcid.org/0000-0003-4352-0252"
-    title: "gridPresence"
-    version: 1.0.0
-    doi: # 
-    date-released: 2024-10-04
-    url: "https://github.com/robinilla/gridPresence" 
-
-preferred-citation:
-- type: article
-  authors:
- - family-names: "Illanas"
-  given-names: "Sonia"
-  orcid: "https://orcid.org/0000-0001-7984-1141"
-- family-names: "Fernández-López"
-  given-names: "Javier"
-  orcid: "https://orcid.org/0000-0003-4352-0252"
-- family-names: "Vicente"
-  given-names: "Joaquín"
-  orcid: "https://orcid.org/0000-0001-8416-3672"
-- family-names: "Ruiz-Rodríguez"
-  given-names: "Carmen"
-  orcid: "https://orcid.org/0000-0002-0768-9280"
-- family-names: "López-Padila"
-  given-names: "Sergio"
-  orcid: "https://orcid.org/0000-0002-9663-4758"
-- family-names: "Sebastián-Pardo"
-  given-names: "Mario"
-  orcid: "https://orcid.org/0009-0001-4629-7175"
-- family-names: "Preite"
-  given-names: "Ludovica"
-  orcid: "https://orcid.org/0000-0003-4557-4326"
-- family-names: "Gómez-Molina"
-  given-names: "Azahara"
-  orcid: "https://orcid.org/0009-0003-6323-498X"
-- family-names: "Acevedo"
-  given-names: "Pelayo"
-  orcid: "https://orcid.org/0000-0002-3509-7696"
-- family-names: "Blanco-Aguiar"
-  given-names: "José Antonio"
-  orcid: "https://orcid.org/0000-0003-4352-0252"
-
-  doi: #""
-  journal: "Scientific data"
-  month: #
-  start: # First page number
-  end: # Last page number
-  title: "Presence-only data for wild ungulates and red fox in Spain based on hunting yields over a 10-year period"
-  issue: #
-  volume: #
-  year: #
+authors:
+- family-names: "Lisa"
+  given-names: "Mona"
+  orcid: "https://orcid.org/0000-0000-0000-0000"
+- family-names: "Bot"
+  given-names: "Hew"
+  orcid: "https://orcid.org/0000-0000-0000-0000"
+title: "My Research Software"
+version: 2.0.4
+doi: 10.5281/zenodo.1234
+date-released: 2017-12-18
+url: "https://github.com/github-linguist/linguist"
