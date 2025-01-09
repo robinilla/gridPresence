@@ -21,7 +21,8 @@ rm(list=ls()) # clears R workspace
 # it contains:
 # - a 5 x 5 km grid: downloaded from the EEA grid (https://sdi.eea.europa.eu/data/c56f5e2b-6e7f-4da7-a5b3-25a8c17ca717) and masked with Spain
 # - a simulated polygon layer with three simulated counts of whatever species
-load(url("https://raw.githubusercontent.com/robinilla/gridPresence/main/script/data_example.Rdata")) 
+grid5km<-st_read("data_example.gpkg", "grid5km")
+polygon.layer<-st_read("data_example.gpkg", "polygon.layer")
 
 # Transform the 5 x 5 km grid to 10 x 10 km, by the EEA grid code id
 grid10km<-grid5km %>% group_by(CELLCOD) %>% summarise(geometry = sf::st_union(geometry)) %>% ungroup()
