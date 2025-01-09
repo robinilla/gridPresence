@@ -15,7 +15,7 @@ The below image summarises how the function works.
 
 ## R script file
 
-The R script example file is prepared for transforming three years counts to 5 x 5 km grid (line 24), as well as 10 x 10 km grid. The transformation of the 5 x 5 km grid to the 10 x 10 km grid can be found at line 28. The function used for transforming hunting yields data to presence-only (gridPresence) is also provided (lines 46-93). An example of how to run the function for more than a year and for both grid resolutions is given as well (lines 97-105). Both results are given and plotted (lines 109-128). The R script file has been written in R 4.3.3 computing language and utilized the packages tidyverse 2.0.024 and sf 1.0-16.
+The R script example file is prepared for transforming three years counts to 5 x 5 km grid (line 24), as well as 10 x 10 km grid. The transformation of the 5 x 5 km grid to the 10 x 10 km grid can be found at line 28. The function used for transforming hunting yields data to presence-only (gridPresence) is also provided (lines 46-93). An example of how to run the function for more than a year and for both grid resolutions is given as well (lines 97-105). Both results are given and plotted (lines 109-128). The R script file has been written in R 4.3.3 computing language and utilized the packages tidyverse 2.0.0 and sf 1.0-16.
 
 
 
