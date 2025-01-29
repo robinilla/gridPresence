@@ -25,7 +25,7 @@ grid5km<-st_read("data_example.gpkg", "grid5km")
 polygon.layer<-st_read("data_example.gpkg", "polygon.layer")
 
 # Transform the 5 x 5 km grid to 10 x 10 km, by the EEA grid code id
-grid10km<-grid5km %>% group_by(CELLCOD) %>% summarise(geometry = sf::st_union(geometry)) %>% ungroup()
+grid10km<-grid5km %>% group_by(CELLCOD) %>% summarise(geometry = sf::st_union(geom)) %>% ungroup()
 
 
 # -----------------------------------------------
