@@ -38,10 +38,9 @@ date-released: 2025-01-29
 url: "https://github.com/robinilla/gridPresence" 
 
 
-
 preferred-citation:
-  type: article
-  authors:
+type: article
+authors:
 - family-names: "Illanas"
   given-names: "Sonia"
   orcid: "https://orcid.org/0000-0001-7984-1141"
