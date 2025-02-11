@@ -31,9 +31,9 @@ authors:
 - family-names: "Blanco-Aguiar"
   given-names: "José Antonio"
   orcid: "https://orcid.org/0000-0003-4352-0252"
-title: gridPresence: v1.6.0. Simulated data set and function: Presence-only data for wild ungulates and red fox in Spain based on hunting yields.
+title: "gridPresence: v1.6.0. Simulated data set and function: Presence-only data for wild ungulates and red fox in Spain based on hunting yields."
 version: 1.6.0
-doi: https://doi.org/10.5281/zenodo.14767197
+doi: 10.5281/zenodo.14767197
 date-released: 2025-01-29
 url: "https://github.com/robinilla/gridPresence" 
 preferred-citation:
@@ -69,9 +69,9 @@ authors:
 - family-names: "Blanco-Aguiar"
   given-names: "José Antonio"
   orcid: "https://orcid.org/0000-0003-4352-0252"
-doi: https://doi.org/10.1038/s41597-025-04574-z
-journal: Scientific Data
+doi: 10.1038/s41597-025-04574-z
+journal: "Scientific Data"
 month: 2
-title: Presence-only data for wild ungulates and red fox in Spain based on hunting yields over a 10-year period
+title: "Presence-only data for wild ungulates and red fox in Spain based on hunting yields over a 10-year period"
 issue: 12
 year: 2025
