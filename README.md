@@ -28,3 +28,7 @@ There is also provided the script that describes the process of the simulation o
 - Hijmans, R. _terra: Spatial Data Analysis._ R package version 1.8-15, https://rspatial.github.io/terra/, [https://rspatial.org/](https://rspatial.org/) (2025).
 - Hijmans, R., Phillips, S., Leathwick, J., Elith, J. _dismo: Species Distribution Modeling_. R package version 1.3-16,  [https://CRAN.R-project.org/package=dismo](https://CRAN.R-project.org/package=dismo) (2024).
 - Turner, R. _deldir: Delaunay Triangulation and Dirichlet (Voronoi) Tessellation_. R package version 2.0-4, [https://CRAN.R-project.org/package=deldir](https://CRAN.R-project.org/package=deldir) (2024).
+
+
+## Citation 
+Illanas, S., Fernández-López, J., Vicente, J., Ruiz-Rodríguez, C., López-Padilla, S., Sebastián-Pardo, M., Preite, L., Gómez-Molina, A., Acevedo, P., Blanco-Aguiar, J.A. Presence-only data for wild ungulates and red fox in Spain based on hunting yields over a 10-year period. Sci Data 12, 236 (2025). [https://doi.org/10.1038/s41597-025-04574-z](https://doi.org/10.1038/s41597-025-04574-z)
